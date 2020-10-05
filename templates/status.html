@@ -1,0 +1,36 @@
+<html>
+
+<link href="/static/css/status.css" rel=stylesheet type="text/css" />
+
+
+<body>
+
+Assigned to {{o}}<br>
+
+Ticket No. {{issueid}}
+
+
+<table class=responstable>
+	<thead>
+		<tr>
+			<th>Updates</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+		{% for q in issue %}
+	<tbody>
+		<tr>
+			<td>{{q.updates}}</td>
+			<td>{{q.date}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% for d in ap %}
+<a href="/close/{{d.id}}">{{m}}</a><br>
+{% endfor %}
+{%for i in ap %}
+<a href="/usrprf/{{i.user_id}}">Return</a>
+{% endfor %}
+</body>
+</html>

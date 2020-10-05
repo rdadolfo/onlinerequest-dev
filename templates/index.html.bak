@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- <link href="/static/css/login.css" rel=stylesheet type="text/css" />-->
+</head>
+<body>
+
+
+<div class="login">
+  <div class="login-triangle"></div>
+  
+  <h2 class="login-header">Online Service Request</h2>
+
+<!-- action="{% url 'login' %}">{% csrf_token %} -->
+  <form class="login-container" method="post"  action="/mylogin/" >{% csrf_token %}
+    <p><input type="text" name="username" id="username" placeholder="Username"></p>
+    <p><input type="password" name="password" id="password" placeholder="Password"></p>
+    <p><input type="submit" value="Log in" /></p>
+<!--	<input type="hidden" name="next" value="{{next}}" /> -->
+  </form>
+</div>
+
+</body>
+</html>

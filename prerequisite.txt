@@ -1,0 +1,7 @@
+chromium-browser
+vim
+libmysqlclient-dev
+build-essential
+python-dev
+libldap2-dev
+libsasl2-dev

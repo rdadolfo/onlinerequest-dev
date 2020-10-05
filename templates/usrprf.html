@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<link href="/static/css/usrprf.css" rel=stylesheet type="text/css" />
+<link href="/static/css/table.css" rel=stylesheet type="text/css" />
+<!--
+-->
+</head>
+<body>
+<!--
+<div style="top: 5px; float: right;">
+</div>
+-->
+<div style="position:relative; left: 2%; height: 300px;">
+	<div style="position: absolute; margin:  0 0 0 80%;"><a style="font-size: 18px;" href="/mylogout/">Logout</a></div>
+	<h1>
+		Welcome {{d.first_name}}
+	</h1>
+	<div style="position:absolute; margin: 50px 0 0 600px;"><h4 style="color: red; font-weight: normal;">{{iss}}</h4></div>
+	<div style="position:absolute; margin: 120px 0 0 600px;"><h4 style="color: red; font-weight: normal;">{{m}}</h4></div>
+	<form method="post" action="/usrprf/{{d.id}}/">{% csrf_token %}
+		<ul class="form-style-1">
+			<li>
+        		<label style="font-size: 12px;">Category</label>
+        			<select name="issuetype" class="field-select" id="issuetype">
+						<option value="default">---- select ----</option>
+						{% for i in s %}
+        				<option value={{i.id}}>{{i.value}}</option>
+						{% endfor %}
+        			</select>
+		    </li>
+   			 <li>
+		        <label style="font-size: 12px;">Request<span class="required">*</span></label>
+		        <textarea name="message" id="message" class="field-long field-textarea"></textarea>
+		    </li>
+		    <li>
+		        <input type="submit" value="Submit" />
+		    </li>
+		</ul>
+	</form>
+</div>
+	<div style="position: relative; left: 2%;  height: 300px; top: 10px;">
+		<label>Open Tickets</label>
+	
+			<table class=responstable>
+				<thead>
+					<tr>
+						<th>Ticket No.</th>
+						<th>Date</th>
+						<th>Category</th>
+						<th>Issues</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+			</table>
+	<div style="position: absolute; overflow: auto; width: 100%; height: 200px;">
+			<table class=responstable>
+				<tbody>
+				{% for a in x %}
+					<tr>
+						<td>{{a.id}}</td>
+						<td>{{a.date_entry}}</td>
+						<td>{{a.issue_type.value}}</td>
+						<td>{{a.issue_desc}}</td>
+						<td><a href="/status/{{a.id}}" id="issueid">{{a.status.value}}</a></td>
+				{% endfor %}
+					</tr>
+				</tbody>
+			</table>
+	</div>
+	</div>
+	<div style="position: relative; height: 500px; top: 0%; left: 2%;">
+			<label>Archives</label>
+			<table class="responstable">
+				<thead>
+					<tr>
+						<th>Ticket No.</th>
+						<th>Date Closed</th>
+						<th>Category</th>
+						<th>Issues</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+			</table>
+		<div style="position: absolute; overflow: auto; width: 100%; height: 300px;">
+			<table class=responstable>
+				<tbody>
+				{% for n in c %}
+					<tr>
+						<td>{{n.id}}</td>
+						<td>{{n.date_closed}}</td>
+						<td>{{n.issue_type.value}}</td>
+						<td>{{n.issue_desc}}</td>
+						<td><a href="/status/{{n.id}}" id="issueid">{{n.status.value}}</a></td>
+				{% endfor %}
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</body>
+</html>

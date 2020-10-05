@@ -1,0 +1,50 @@
+<html>
+<head>
+	<link href="/static/css/archive.css" rel=stylesheet type="text/css" />
+	<script src="/static/js/tablefilter.js"></script>
+</head>
+<body>
+<div>
+<div style="top: 20px; float: right;">
+    <a href="/helpdesk/{{u}}">Helpdesk Admin</a>
+    <a href="/hlogout/">Logout</a>
+</div>
+    <h1>
+        Welcome {{user.first_name}}
+    </h1>
+</div>
+
+Archives<br>
+<div style="position:relative; height: 800px;">
+<table class=responstable>
+    <tr>
+        <thead>
+            <th>Ticket No.</th>
+            <th>Date Assigned</th>
+            <th>User</th>
+            <th>Category</th>
+            <th>Issues</th>
+            <th>Helpdesk</th>
+        </thead>
+    </tr>
+</table>
+	<div style="position:absolute; overflow: auto; width: 100%; height: 700px;">
+	<table class=responstable>
+    <tr>
+        {% for l in s %}
+    <tbody>
+            <td><a href="/astatus/{{u}}/{{l.id}}">{{l.id}}</a></td>
+            <td>{{l.date_assign}}</td>
+            <td>{{l.user.username}}</td>
+            <td>{{l.issue_type.value}}</td>
+            <td>{{l.issue_desc}}</td>
+            <td>{{l.ap.username}}</td>
+    </tbody>
+        {% endfor %}
+    </tr>
+
+	</table>
+	</div>
+</div>
+</body>
+</html>

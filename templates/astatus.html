@@ -1,0 +1,42 @@
+<html>
+
+<link href="/static/css/status.css" rel=stylesheet type="text/css" />
+
+
+<body>
+<br>
+Status
+{% for j in issueid %}
+<ul>
+	<li>
+		User: {{j.user}}
+	</li>
+	<li>
+	Helpdesk: {{j.ap}}<br>
+	</li>
+	<li>
+	Ticket No.: {{j.id}}
+	</li>
+{% endfor %}
+</ul>
+
+<table class=responstable>
+	<thead>
+		<tr>
+			<th>Updates</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+		{% for q in issue %}
+	<tbody>
+		<tr>
+			<td>{{q.updates}}</td>
+			<td>{{q.date}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<br>
+<a href="/archive/{{u}}">Return</a>
+</body>
+</html>

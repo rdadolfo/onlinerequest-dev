@@ -1,0 +1,47 @@
+<html>
+
+<link href="/static/css/update-table.css" rel=stylesheet type="text/css" />
+<link href="/static/css/update.css" rel=stylesheet type="text/css" />
+
+
+<body>
+<div style="width:500px; margin-left:0">
+User:	{{o.user.username}}<br>
+
+Ticket No. {{o.issue_id}}<br>
+Issue:	{{o.issue_desc}}
+<form method="post" action="/update/{{u}}/{{i}}/">{% csrf_token %}
+<ul class="form-style-1">
+    <li>
+        <label style="font-size: 12px;">Update<span class="required">*</span></label>
+        <textarea name="message" id="message" class="field-long field-textarea"></textarea>
+    </li>
+    <li>
+        <input type="submit" value="Submit" />
+    </li>
+</ul>
+</form>
+</div>
+
+
+<table class=responstable>
+	<thead>
+		<tr>
+			<th>Updates</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for r in x %}
+		<tr>
+			<td>{{r.updates}}</td>
+			<td>{{r.date}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<a href="/close/{{i}}">Close Ticket {{issue.id}}</a><br>
+<a href="/helpdesk/{{u}}">Return</a>
+</body>
+</html>
